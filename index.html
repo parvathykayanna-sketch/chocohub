@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210e06">
+<title>CHocoHub — Pure Chocolate. Real Happiness.</title>
+
+<style>
+:root {
+  --dark: #210e06;
+  --dark2: #321609;
+  --brown: #4b2512;
+  --gold: #e8b65c;
+  --gold2: #c88a35;
+  --cream: #fff4e4;
+  --ink: #24150d;
+  --muted: #715747;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 75px; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.55;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+img { display: block; max-width: 100%; }
+.container { width: 84%; max-width: 1250px; margin: auto; }
+
+h1, h2, h3, .brand, .script {
+  font-family: Georgia, "Times New Roman", serif;
+}
+.eyebrow {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold2);
+}
+.section-title {
+  font-size: clamp(29px, 3.2vw, 43px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.section-subtitle { font-size: 12px; color: var(--muted); margin-top: 10px; }
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: #241206;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .25s;
+}
+.btn:hover { background: #fff1d1; transform: translateY(-2px); }
+.btn-dark { background: var(--dark); color: var(--gold); border-color: var(--dark); }
+.btn-dark:hover { background: var(--brown); color: white; }
+section { scroll-margin-top: 70px; }
+
+/* NAVIGATION */
+header {
+  height: 57px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+  background: rgba(28, 12, 5, .97);
+  border-bottom: 1px solid rgba(230, 182, 92, .25);
+}
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 25px;
+  white-space: nowrap;
+  line-height: 1;
+}
+.brand-mark { font-size: 31px; }
+.brand small {
+  display: block;
+  font: 8px Arial, sans-serif;
+  letter-spacing: .5px;
+  color: #e4c89e;
+  margin-top: 5px;
+}
+.nav-links { display: flex; align-items: center; gap: 25px; }
+.nav-links a { font-size: 10px; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-links a.active { border-bottom: 2px solid var(--gold); padding: 20px 0 17px; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.shop-nav {
+  border: 1px solid #a87932;
+  color: var(--gold);
+  padding: 9px 17px;
+  border-radius: 25px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.shop-nav:hover { background: var(--gold); color: var(--dark); }
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  color: var(--gold);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  min-height: 305px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(24, 9, 3, .91) 0%, rgba(35, 13, 4, .66) 43%, rgba(30, 10, 3, .05) 100%),
+    url("https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=1800&q=90")
+    center 53% / cover no-repeat;
+}
+.hero-content { padding: 44px 0 49px; max-width: 530px; }
+.hero .eyebrow { color: #f4cb73; }
+.hero h1 {
+  font-size: clamp(43px, 5.2vw, 65px);
+  line-height: .99;
+  font-weight: 500;
+  letter-spacing: -1.6px;
+  margin: 12px 0;
+}
+.hero h1 em { color: var(--gold); font-weight: normal; }
+.hero p { max-width: 340px; font-size: 11px; color: #f4e5d5; line-height: 1.65; }
+.hero .btn { margin-top: 22px; }
+
+/* STORY */
+.story {
+  padding: 24px 0;
+  background:
+    radial-gradient(ellipse at 0 100%, rgba(194, 148, 88, .12), transparent 45%),
+    var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr .58fr;
+  gap: 30px;
+  align-items: center;
+}
+.story-photo { position: relative; padding: 8px 12px 8px 0; }
+.story-photo img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  border: 7px solid #fffaf2;
+  box-shadow: 0 5px 18px #49270e22;
+  transform: rotate(-2deg);
+  border-radius: 4px;
+}
+.since {
+  position: absolute;
+  right: -3px;
+  bottom: -1px;
+  width: 82px;
+  height: 82px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px #0003;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+}
+.since strong { font-size: 27px; line-height: 1.1; }
+.story-copy h2 { font-size: clamp(25px, 3vw, 35px); line-height: 1.04; margin: 5px 0 12px; }
+.story-copy p { font-size: 10.5px; line-height: 1.5; color: #49372b; margin-bottom: 9px; }
+.story-copy .btn { margin-top: 2px; padding: 10px 18px; }
+.story-note {
+  border-left: 1px solid #d5a85f;
+  padding: 12px 0 12px 25px;
+  text-align: center;
+  color: #8d481f;
+}
+.script { font-style: italic; font-size: 19px; line-height: 1.5; transform: rotate(-5deg); }
+.story-note .leaf { font-size: 28px; display: block; margin-top: 12px; }
+
+/* VARIETIES */
+.varieties {
+  padding: 23px 0 27px;
+  color: white;
+  background:
+    radial-gradient(ellipse at 50% 0%, #49230f 0%, transparent 55%),
+    linear-gradient(110deg, #210e06, #301407 52%, #210e06);
+  position: relative;
+}
+.varieties .section-heading { text-align: center; margin-bottom: 10px; }
+.varieties .eyebrow { color: var(--gold); }
+.varieties .section-title { margin-top: 5px; font-size: clamp(27px, 3vw, 37px); }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.product-card {
+  overflow: hidden;
+  border: 1px solid #e0b75d;
+  border-radius: 5px;
+  background: var(--cream);
+  color: var(--ink);
+  transition: transform .25s, box-shadow .25s;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px #0005; }
+.product-card img { width: 100%; height: 123px; object-fit: cover; }
+.product-info { padding: 10px 15px 12px; }
+.product-info h3 { font-size: 17px; line-height: 1.25; }
+.flavour { font-size: 9px; letter-spacing: .5px; color: #6c5847; }
+.product-info p { font-size: 9.5px; line-height: 1.45; color: #564538; margin: 8px 0 10px; }
+.product-info .btn { padding: 8px 14px; font-size: 9px; }
+
+/* PROCESS */
+.process {
+  color: white;
+  padding: 32px 0;
+  background:
+    linear-gradient(90deg, rgba(28, 10, 3, .94), rgba(37, 14, 5, .78)),
+    url("https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=1800&q=85")
+    center / cover;
+}
+.process-grid { display: grid; grid-template-columns: .92fr 2fr; gap: 26px; align-items: center; }
+.process-intro h2 { font-size: clamp(26px, 3vw, 36px); line-height: 1.04; margin: 8px 0 12px; }
+.process-intro p { color: #ead8c4; font-size: 10px; margin-bottom: 15px; }
+.process-intro .btn { padding: 10px 17px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.step { text-align: center; position: relative; }
+.step-icon {
+  width: 57px;
+  height: 57px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 8px;
+  color: var(--gold);
+  font-size: 24px;
+  background: #2c1309a6;
+}
+.step .number { color: var(--gold); font-size: 9px; }
+.step h3 { font-size: 13px; margin: 3px 0; }
+.step p { font-size: 9px; line-height: 1.45; color: #e5cbb4; }
+.step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -10px;
+  top: 18px;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+/* QUALITY */
+.quality { background: #fff5e7; padding: 22px 0; }
+.quality-grid { display: grid; grid-template-columns: .8fr 1.05fr 1fr; gap: 24px; align-items: center; }
+.quality-photo img { width: 100%; height: 143px; object-fit: cover; border-radius: 4px; }
+.quality-copy h2 { font-size: clamp(23px, 2.7vw, 32px); line-height: 1.02; margin: 5px 0 10px; }
+.quality-copy p { font-size: 10px; line-height: 1.5; color: var(--muted); }
+.quality-copy .btn { margin-top: 12px; padding: 9px 15px; }
+.quality-points {
+  border-left: 1px solid #e5d0b4;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 12px;
+}
+.quality-point { display: flex; align-items: center; gap: 9px; }
+.quality-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e2c9a5;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+}
+.quality-point strong { display: block; font-size: 9px; line-height: 1.4; }
+.quality-point small { display: block; font-size: 8px; color: var(--muted); line-height: 1.4; }
+
+/* CONTACT */
+.contact {
+  padding: 24px 0;
+  background: linear-gradient(115deg, #e3b361, #c98e3f);
+}
+.contact-grid { display: grid; grid-template-columns: .85fr .8fr .62fr; gap: 30px; align-items: center; }
+.footer-brand .brand { color: var(--dark); font-size: 24px; }
+.footer-brand .brand small { color: #402613; }
+.socials { display: flex; gap: 18px; margin-top: 16px; }
+.socials a { font-weight: bold; font-size: 13px; }
+.socials a:hover { color: white; }
+.contact h3 { font-size: 13px; margin-bottom: 9px; }
+.contact-details p { font-size: 10px; line-height: 1.7; margin-bottom: 3px; overflow-wrap: anywhere; }
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  background: #e8bd7b;
+  border: 1px solid #ae7937;
+  border-radius: 3px;
+  padding: 7px 9px;
+  font-size: 9px;
+  margin-bottom: 6px;
+  outline: none;
+  color: var(--dark);
+}
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--dark); }
+.contact-form textarea { height: 48px; resize: vertical; display: block; }
+.contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.contact-form .btn { display: flex; margin-left: auto; padding: 8px 12px; border-radius: 4px; font-size: 9px; }
+.contact-script { text-align: center; font-size: 19px; line-height: 1.3; color: #6e3c1a; }
+.contact-script span { display: block; font-size: 25px; margin-top: 5px; }
+
+/* BOTTOM BAR */
+.bottom-bar { background: var(--dark); color: #e4d1bd; padding: 12px 0; font-size: 9px; }
+.bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bottom-inner a:hover { color: var(--gold); }
+.toast {
+  position: fixed;
+  z-index: 300;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%, 80px);
+  opacity: 0;
+  transition: .3s;
+  background: var(--dark);
+  color: white;
+  border: 1px solid var(--gold);
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 12px;
+  text-align: center;
+  max-width: 90%;
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+/* CART */
+.cart-overlay { display: none; position: fixed; inset: 0; background: #0009; z-index: 200; }
+.cart-overlay.open { display: block; }
+.cart-panel { position: absolute; right: 0; top: 0; height: 100%; width: min(390px, 100%); background: var(--cream); color: var(--dark); padding: 23px; display: flex; flex-direction: column; }
+.cart-head { display: flex; justify-content: space-between; border-bottom: 1px solid #e4d1ba; padding-bottom: 13px; }
+.cart-head h2 { font-size: 23px; }
+.cart-head button { border: 0; background: none; font-size: 27px; cursor: pointer; }
+.cart-items { overflow: auto; flex: 1; }
+.cart-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid #e4d1ba; font-size: 12px; }
+.cart-row button { width: 25px; height: 25px; border: 1px solid #d9c4a8; border-radius: 50%; background: white; cursor: pointer; }
+.cart-footer { border-top: 1px solid #e4d1ba; padding-top: 16px; }
+.cart-footer .btn { width: 100%; }
+.empty { padding: 35px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+@media(min-width:1400px) {
+  .hero { min-height: 440px; }
+  .story-photo img { height: 250px; }
+  .product-card img { height: 185px; }
+  .quality-photo img { height: 200px; }
+}
+@media(max-width:900px) {
+  .container { width: 90%; }
+  .nav-links { gap: 13px; }
+  .nav-links a { font-size: 9px; }
+  .brand { font-size: 21px; }
+  .story-grid { grid-template-columns: 1fr 1.1fr; gap: 25px; }
+  .story-note { display: none; }
+  .quality-grid { grid-template-columns: .75fr 1fr; }
+  .quality-points { grid-column: 1 / -1; border-left: 0; border-top: 1px solid #e5d0b4; padding: 16px 0 0; }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+  .contact-script { display: none; }
+}
+@media(max-width:650px) {
+  header { height: auto; min-height: 60px; }
+  .nav { min-height: 60px; flex-wrap: wrap; }
+  .brand { font-size: 22px; }
+  .brand-mark { font-size: 26px; }
+  .menu-toggle { display: block; }
+  .nav-actions .shop-nav { display: none; }
+  .nav-links { display: none; order: 3; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 0; padding-bottom: 10px; }
+  .nav-links.open { display: flex; }
+  .nav-links a, .nav-links a.active { padding: 10px 4px; border-bottom: 1px solid #ffffff18; font-size: 12px; }
+  .hero { min-height: 370px; background-position: 59% center; }
+  .hero-content { padding: 58px 0; max-width: 350px; }
+  .hero h1 { font-size: clamp(43px, 10vw, 58px); }
+  .hero p { max-width: 290px; }
+  .story { padding: 34px 0; }
+  .story-grid { grid-template-columns: 1fr; gap: 25px; }
+  .story-photo { margin-right: 15px; }
+  .story-photo img { height: 230px; }
+  .story-copy h2 { font-size: 32px; }
+  .story-copy p { font-size: 12px; }
+  .varieties { padding: 38px 0; }
+  .varieties .section-heading { margin-bottom: 24px; }
+  .product-grid { grid-template-columns: 1fr; gap: 20px; max-width: 420px; margin: auto; }
+  .product-card img { height: 210px; }
+  .product-info { padding: 17px; }
+  .product-info h3 { font-size: 21px; }
+  .product-info p { font-size: 11px; }
+  .process { padding: 38px 0; }
+  .process-grid { grid-template-columns: 1fr; gap: 28px; }
+  .process-intro h2 { font-size: 36px; }
+  .process-intro p { font-size: 12px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 25px 12px; }
+  .step-icon { width: 65px; height: 65px; }
+  .step h3 { font-size: 15px; }
+  .step p { font-size: 10px; max-width: 150px; margin: auto; }
+  .step:not(:last-child)::after { display: none; }
+  .quality { padding: 34px 0; }
+  .quality-grid { grid-template-columns: 1fr; gap: 20px; }
+  .quality-photo img { height: 230px; }
+  .quality-copy h2 { font-size: 34px; }
+  .quality-copy p { font-size: 12px; }
+  .quality-points { grid-column: auto; }
+  .quality-point strong { font-size: 10px; }
+  .quality-point small { font-size: 9px; }
+  .contact { padding: 34px 0; }
+  .contact-grid { grid-template-columns: 1fr; gap: 25px; }
+  .contact-form input, .contact-form textarea { font-size: 11px; padding: 10px; }
+  .contact-form textarea { height: 85px; }
+  .contact h3 { font-size: 16px; }
+  .bottom-inner { flex-direction: column; text-align: center; gap: 7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">❧</span>
+      <span>CHocoHub<small>Pure Chocolate. Real Happiness.</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#varieties">Varieties</a>
+      <a href="#process">Our Process</a>
+      <a href="#quality">Quality</a>
+      <a href="#contact">Contact us</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#varieties" class="shop-nav">🛒 &nbsp; Shop Now</a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Welcome to CHocoHub</span>
+      <h1>Real Chocolate<br>for a Sweeter<br><em>Tomorrow.</em></h1>
+      <p>Crafted with passion, our chocolates bring together rich flavors, pure ingredients and timeless traditions.</p>
+      <a class="btn" href="#varieties">Explore Our Collection <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-photo">
+      <img
+        src="https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=900&q=85"
+        alt="Artisan chocolate making"
+        loading="lazy">
+      <div class="since">Since<strong>1952</strong></div>
+    </div>
+
+    <div class="story-copy">
+      <span class="eyebrow">Our Journey</span>
+      <h2>A Rich History of<br>Sweet Beginnings</h2>
+      <p>CHocoHub began with a simple dream — to create the finest chocolates using pure ingredients and traditional craftsmanship.</p>
+      <p>Over the decades, we have grown from a local workshop to a trusted name in the world of chocolate, staying true to our values of quality, passion and innovation.</p>
+      <a href="#quality" class="btn">Learn More <span>→</span></a>
+    </div>
+
+    <aside class="story-note">
+      <p class="script">Same passion.<br>New stories.</p>
+      <span class="leaf">♧</span>
+    </aside>
+  </div>
+</section>
+
+<!-- CHOCOLATE VARIETIES -->
+<section class="varieties" id="varieties">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Our Chocolate Varieties</span>
+      <h2 class="section-title">Three Treasures<br>of True Indulgence</h2>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <img
+          src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=800&q=85"
+          alt="Dark chocolate pieces"
+          loading="lazy">
+        <div class="product-info">
+          <h3>Dark Chocolate</h3>
+          <span class="flavour">Bold · Rich · Intense</span>
+          <p> The true chocolate connoisseur, our dark chocolate offers a deep, rich flavor with a hint of natural bitterness.</p>
+          <button class="btn" onclick="showProduct('Dark Chocolate')">Explore More <span>→</span></button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img
+          src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=800&q=85"
+          alt="Milk chocolate and cocoa"
+          loading="lazy">
+        <div class="product-info">
+          <h3>Milk Chocolate</h3>
+          <span class="flavour">Smooth · Creamy · Classic</span>
+          <p>A perfect balance of rich cocoa and velvety milk, creating a smooth and delightful experience in every bite.</p>
+          <button class="btn" onclick="showProduct('Milk Chocolate')">Explore More <span>→</span></button>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img
+          src="https://t3.ftcdn.net/jpg/08/88/89/80/360_F_888898045_fsQXr1YP6cEPawkK4LPObwQhxcvFydk2.jpg"
+          alt="Creamy white chocolate"
+          loading="lazy">
+        <div class="product-info">
+          <h3>White Chocolate</h3>
+          <span class="flavour">Velvety · Sweet · Luxurious</span>
+          <p>Made with the finest cocoa butter, our white chocolate is a creamy indulgence for those who love a sweeter touch.</p>
+          <button class="btn" onclick="showProduct('White Chocolate')">Explore More <span>→</span></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION PROCESS -->
+<section class="process" id="process">
+  <div class="container process-grid">
+    <div class="process-intro">
+      <span class="eyebrow">The Making Process</span>
+      <h2>From Bean to<br>Beautiful Chocolate</h2>
+      <p>Every bar tells a story — from carefully selected cocoa beans to expertly crafted chocolate.</p>
+      <a class="btn" href="#quality">Discover Our Process <span>→</span></a>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-icon">♧</div>
+        <span class="number">01</span>
+        <h3>Sourcing</h3>
+        <p>We select the finest cocoa beans from sustainable farms.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-icon">♨</div>
+        <span class="number">02</span>
+        <h3>Roasting</h3>
+        <p>Beans are roasted to unlock their rich aroma and flavor.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-icon">♨</div>
+        <span class="number">03</span>
+        <h3>Conching</h3>
+        <p>We refine the texture for a smooth and velvety finish.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-icon">▧</div>
+        <span class="number">04</span>
+        <h3>Molding</h3>
+        <p>Each piece is carefully shaped and cooled with precision.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY STANDARDS -->
+<section class="quality" id="quality">
+  <div class="container quality-grid">
+    <div class="quality-photo">
+      <img
+        src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&w=900&q=85"
+        alt="Cocoa beans and chocolate ingredients"
+        loading="lazy">
+    </div>
+
+    <div class="quality-copy">
+      <span class="eyebrow">Our Quality Standards</span>
+      <h2>Pure Ingredients.<br>Exceptional Quality.</h2>
+      <p>We believe great chocolate starts with great ingredients. That's why we use carefully selected cocoa and follow strict quality standards at every step.</p>
+      <a href="#contact" class="btn">Our Commitment <span>→</span></a>
+    </div>
+
+    <div class="quality-points">
+      <div class="quality-point">
+        <span class="quality-icon">♧</span>
+        <div><strong>Natural Ingredients</strong><small>Thoughtfully selected</small></div>
+      </div>
+      <div class="quality-point">
+        <span class="quality-icon">♢</span>
+        <div><strong>Quality Checks</strong><small>Care in every batch</small></div>
+      </div>
+      <div class="quality-point">
+        <span class="quality-icon">♡</span>
+        <div><strong>Hygienic Production</strong><small>Clean handling practices</small></div>
+      </div>
+      <div class="quality-point">
+        <span class="quality-icon">☆</span>
+        <div><strong>Consistent Quality</strong><small>Made with dedication</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FOOTER -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="footer-brand">
+      <a class="brand" href="#home">
+        <span class="brand-mark">❧</span>
+        <span>CHocoHub<small>Pure Chocolate. Real Happiness.</small></span>
+      </a>
+      <div class="socials">
+        <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+        <a href="https://x.com/" aria-label="X">𝕏</a>
+        <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+
+    <div class="contact-details">
+      <h3>Get in Touch</h3>
+      <p>☎ &nbsp; +91 98765 43210</p>
+      <p>✉ &nbsp; hello@chocohub.com</p>
+      <p>⌖ &nbsp; 123 Chocolate Lane,<br>&nbsp;&nbsp;&nbsp;&nbsp; Sweetville, India - 400001</p>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <form id="contactForm">
+        <div class="form-row">
+          <input id="customerName" type="text" placeholder="Your Name" required>
+          <input id="customerEmail" type="email" placeholder="Your Email" required>
+        </div>
+        <textarea id="customerMessage" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-dark">Send Message <span>→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bottom-bar">
+  <div class="container bottom-inner">
+    <span>© <span id="year"></span> CHocoHub. All rights reserved.</span>
+    <span><a href="#contact">Privacy Policy</a> &nbsp; | &nbsp; <a href="#contact">Terms &amp; Conditions</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+let toastTimeout;
+
+function notify(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(function() {
+    toast.classList.remove('show');
+  }, 2800);
+}
+
+function showProduct(name) {
+  notify(name + ' — Contact us for product details and availability.');
+}
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('customerName').value.trim();
+  notify('Thank you, ' + name + '! Your form is ready for backend integration.');
+
+  this.reset();
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+});
+</script>
+
+</body>
+</html>
